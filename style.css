@@ -623,6 +623,8 @@ footer {
     flex-direction: row;
     padding: 5.2rem 6.45rem;
     background: url(./images/bg-shorten-desktop.svg) var(--dark-violet);
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
   form input {
