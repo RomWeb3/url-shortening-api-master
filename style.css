@@ -199,6 +199,15 @@ h1 {
   background: #9ae3e3;
 }
 
+.url-shortened {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
 form {
   margin-top: 8.8rem;
   width: 87.2%;
@@ -269,15 +278,93 @@ form button {
   transition: all 200ms ease-in-out;
 }
 
+.responses {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.4rem;
+}
+
+.responses:not(.active) {
+  margin-bottom: 4rem;
+}
+
+.response {
+  width: 87.2%;
+  max-width: 32.7rem;
+  background: white;
+  border-radius: 5px;
+  text-align: left;
+  padding-top: 0.6rem;
+}
+
+.response:last-child {
+  margin-bottom: 8rem;
+}
+
+.original {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-right: 1.6rem;
+}
+
+.original a {
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 3.6rem;
+  letter-spacing: 0.12px;
+  color: var(--brown);
+  padding: 0 1.6rem 0;
+}
+
+.shortened a {
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 3.6rem;
+  letter-spacing: 0.12px;
+  color: var(--Cyan);
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background: var(--grayish-violet);
+  opacity: 0.25;
+}
+
+.shortened {
+  padding: 0.6rem 1.6rem 0;
+}
+
+.responses button {
+  background: var(--Cyan);
+  width: 100%;
+  height: 4rem;
+  border-radius: 5px;
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  color: white;
+  margin: 0.8rem 0 1.6rem;
+  cursor: pointer;
+}
+
+.responses button.active {
+  background: var(--dark-violet);
+}
+
 .container {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background: var(--light-gray);
   margin-top: -8rem;
-  padding: 16rem 0 8rem;
-  width: 100%;
+  padding-bottom: 8rem;
+  padding-top: 11rem;
 }
 
 .container h2 {
@@ -571,9 +658,67 @@ footer {
     background: #9ae3e3;
   }
 
+  .responses {
+    margin-bottom: 0rem;
+    gap: 1.6rem;
+  }
+
+  .responses:not(.active) {
+    margin-bottom: 8.5rem;
+  }
+
+  .response:last-child {
+    margin-bottom: 12rem;
+  }
+
+  .response {
+    max-width: 111rem;
+    height: 7.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0;
+  }
+
+  .original {
+    padding-right: 0;
+  }
+
+  .original a {
+    padding: 0 3.2rem;
+    font-size: 2rem;
+    letter-spacing: 0.15px;
+  }
+
+  .line {
+    display: none;
+  }
+
+  .shortened {
+    display: flex;
+    align-items: center;
+    gap: 2.4rem;
+    padding: 0 2.4rem;
+  }
+
+  .shortened a {
+    font-size: 2rem;
+    letter-spacing: 0.15px;
+  }
+
+  .responses button {
+    width: 10.3rem;
+    margin: 0;
+    transition: all 200ms ease-in-out;
+  }
+
+  .responses button:not(.active):hover {
+    background: #9ae3e3;
+  }
+
   .container {
     margin-top: -8.8rem;
-    padding: 20.8rem 0 12rem;
+    padding: 11.3rem 0 12rem;
   }
 
   .container h2 {
@@ -718,6 +863,7 @@ footer {
     position: relative;
     top: 5.8rem;
     padding: 0;
+    right: -9.36rem;
   }
 
   form {
