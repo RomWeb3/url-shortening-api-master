@@ -24,6 +24,9 @@ sumbitBtn.addEventListener("click", (e) => {
     errorMessage.classList.remove("error");
     shortenUrl();
     createDiv();
+    setTimeout(() => {
+      localStore();
+    }, 1000);
   }
 });
 
@@ -119,3 +122,68 @@ function clipboard(txtToCopy) {
     }
   });
 }
+
+// Local storage
+function localStore() {
+  const shortenedUrl = shortenUrlFromApi;
+  const originalUrl = formInput.value;
+  const data = { shortenedUrl, originalUrl };
+  let urls = [];
+  if (localStorage.getItem("urls") === null) {
+    urls = [];
+  } else {
+    urls = JSON.parse(localStorage.getItem("urls"));
+  }
+  urls.push(data);
+  localStorage.setItem("urls", JSON.stringify(urls));
+}
+
+// Load local storage
+const loadLocalStorage = () => {
+  const urls = JSON.parse(localStorage.getItem("urls"));
+  if (urls === null) {
+    return;
+  } else {
+    urls.forEach((url) => {
+      resultContainer.classList.add("active");
+      const response = document.createElement("div");
+      response.classList.add("response");
+      resultContainer.append(response);
+
+      const originalUrlDiv = document.createElement("div");
+      originalUrlDiv.classList.add("original");
+      response.append(originalUrlDiv);
+
+      const originalUrl = document.createElement("a");
+      originalUrl.innerHTML = url.originalUrl;
+      originalUrlDiv.append(originalUrl);
+
+      const separatorLine = document.createElement("div");
+      separatorLine.classList.add("line");
+      response.append(separatorLine);
+
+      const shortenUrlDiv = document.createElement("div");
+      shortenUrlDiv.classList.add("shortened");
+      response.append(shortenUrlDiv);
+
+      const shortenUrl = document.createElement("a");
+      shortenUrl.innerHTML = url.shortenedUrl;
+      shortenUrlDiv.append(shortenUrl);
+
+      const copyBtn = document.createElement("button");
+      copyBtn.textContent = "Copy";
+      shortenUrlDiv.append(copyBtn);
+      copyBtn.addEventListener("click", () => {
+        clipboard(shortenUrl.innerHTML);
+        copyBtn.classList.add("active");
+        copyBtn.textContent = "Copied!";
+        setTimeout(() => {
+          copyBtn.classList.remove("active");
+          copyBtn.textContent = "Copy";
+        }, 2000);
+      });
+    });
+  }
+};
+
+loadLocalStorage();
