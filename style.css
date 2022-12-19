@@ -146,7 +146,6 @@ main {
   align-items: center;
   width: 100%;
   max-width: 111rem;
-  background: white;
 }
 
 .main-img img {
@@ -787,7 +786,8 @@ footer {
     height: 25rem;
     background: url(./images/bg-boost-desktop.svg) var(--dark-violet);
     background-repeat: no-repeat;
-    background-position: 100% 0;
+    background-position: 100%;
+    background-size: cover;
   }
 
   .cta h2 {
